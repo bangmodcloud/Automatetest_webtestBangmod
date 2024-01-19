@@ -39,7 +39,7 @@ describe('Manage Version / Delete Version', () => {
             cy.get(':nth-child(1) > :nth-child(7) > .ICON-TERTIARY > .btn').click();
             cy.get('.modal-content')
                 .should('be.visible')
-                .and('contain', 'Confirm Delete Distro?')
+                .and('contain', 'Confirm Delete Version?')
                 .contains('button', 'Yes')
                 .click()
             cy.wait(700);
@@ -61,7 +61,7 @@ describe('Manage Version / Delete Version', () => {
             cy.contains('Delete').click();
             cy.get('.modal-content')
                 .should('be.visible')
-                .and('contain', 'Confirm Delete Distro?')
+                .and('contain', 'Confirm Delete Version?')
                 .contains('button', 'No')
                 .click()
             cy.wait(700);
@@ -80,7 +80,7 @@ describe('Manage Version / Delete Version', () => {
             cy.contains('Delete').click();
             cy.get('.modal-content')
                 .should('be.visible')
-                .and('contain', 'Confirm Delete Distro?')
+                .and('contain', 'Confirm Delete Version?')
                 .contains('button', 'Yes')
                 .click()
             cy.wait(700);
