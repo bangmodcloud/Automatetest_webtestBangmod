@@ -31,6 +31,10 @@ Cypress.Commands.add('pathKeypair', () => {
         method: 'GET',
 
     }).as("User")
+    
+        cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/cloud-server/keypair')
+        cy.get('a').click();
+        cy.wait(1000)
 
         cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/cloud-server/keypair')
         cy.get('a').click();
@@ -39,7 +43,7 @@ Cypress.Commands.add('pathKeypair', () => {
         cy.get('#username').type('plapika03@gmail.com');
         cy.get('#password').type('769461Pla-');
         cy.get('.btn').click();
-
+    
     
 
         cy.get('.d-flex > :nth-child(1)').eq(1).type('1');
