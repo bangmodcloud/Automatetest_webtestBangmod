@@ -25,20 +25,17 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import 'cypress-file-upload';
 
-// Cypress.Commands.add('pathKeypair', (Username,Password) => {
-//     cy.session([Username,Password], () => {
-//         cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/cloud-server/keypair')
-//     })
-
-// }),
-
- Cypress.Commands.add('pathKeypair', () => {
+Cypress.Commands.add('pathKeypair', () => {
     cy.intercept({
         url: 'https://bangmod-dev-web-v2.dev.bangmod.cloud/cloud-server/keypair',
         method: 'GET',
-        
+
     }).as("User")
     
+        cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/cloud-server/keypair')
+        cy.get('a').click();
+        cy.wait(1000)
+
         cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/cloud-server/keypair')
         cy.get('a').click();
         cy.wait(1000)
@@ -48,14 +45,47 @@ import 'cypress-file-upload';
         cy.get('.btn').click();
     
     
+
         cy.get('.d-flex > :nth-child(1)').eq(1).type('1');
         cy.get('.d-flex > :nth-child(2)').type('2');
         cy.get('.d-flex > :nth-child(3)').type('3');
         cy.get('.d-flex > :nth-child(4)').type('4');
         cy.get('.d-flex > :nth-child(5)').type('5');
         cy.get('.d-flex > :nth-child(6)').type('6');
+
+
         cy.wait(1000)
         cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/cloud-server/keypair')
+
+  }),
+
+  Cypress.Commands.add('pathVolume', () => {
+    cy.intercept({
+        url: 'https://bangmod-dev-web-v2.dev.bangmod.cloud/cloud-server/volume',
+        method: 'GET',
+
+    }).as("User")
+
+        cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/cloud-server/volume')
+        cy.get('a').click();
+        cy.wait(1000)
+
+        cy.get('#username').type('plapika03@gmail.com');
+        cy.get('#password').type('769461Pla-');
+        cy.get('.btn').click();
+
+    
+
+        cy.get('.d-flex > :nth-child(1)').eq(1).type('1');
+        cy.get('.d-flex > :nth-child(2)').type('2');
+        cy.get('.d-flex > :nth-child(3)').type('3');
+        cy.get('.d-flex > :nth-child(4)').type('4');
+        cy.get('.d-flex > :nth-child(5)').type('5');
+        cy.get('.d-flex > :nth-child(6)').type('6');
+
+
+        cy.wait(1000)
+        cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/cloud-server/volume')
 
   }),
   Cypress.Commands.add('loginOffice', () => {
