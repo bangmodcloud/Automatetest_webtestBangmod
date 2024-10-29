@@ -10,16 +10,16 @@ describe('Tab Cloud', () => {
     it('Usabilities (Admin search with Hostname and Ip Address.  The system displays the searched list. If not found, it will display a message saying No Data. )', () => {
 
         cy.get('#user-management-customer').click();
-        cy.get('#search').type('pla01@gmail.com');
+        cy.get('#search').type('pla01@gmail.com',{force: true});
         cy.get('.ant-table-row > :nth-child(3) > a').click({ force: true });
-        cy.get(':nth-child(6) > .px-0').click({ force: true });
+        cy.get(':nth-child(7) > .px-0').click({ force: true });
         cy.wait(300);
         cy.get('#search').type('wara-test');
         cy.get('.ant-table-row > :nth-child(1)').should('be.visible');
         cy.get('#search').clear().type('10.0.0.1');
         cy.get('.ant-table-row > :nth-child(1)').should('be.visible');
         cy.get('#search').clear().type('test Hostname ');
-        cy.get('.ant-empty-description').contains('No Data')
+        cy.get('.ant-empty-description').contains('No data')
         cy.wait(700);
 
     })
@@ -28,9 +28,9 @@ describe('Tab Cloud', () => {
         The system will to sort ascending.)', () => {
 
         cy.get('#user-management-customer').click();
-        cy.get('#search').type('pla01@gmail.com');
+        cy.get('#search').type('pla01@gmail.com',{force: true});
         cy.get('.ant-table-row > :nth-child(3) > a').click({ force: true });
-        cy.get(':nth-child(6) > .px-0').click({ force: true });
+        cy.get(':nth-child(7) > .px-0').click({ force: true });
         cy.wait(300);
         cy.get(':nth-child(1) > .ant-table-column-sorters').dblclick(); //ID
         cy.wait(500);
@@ -59,10 +59,7 @@ describe('Tab Cloud', () => {
         cy.get(':nth-child(7) > .ant-table-column-sorters').dblclick(); //Volume
         cy.wait(500);
         cy.get(':nth-child(7) > .ant-table-column-sorters').click(); //Volume
-        cy.wait(200);
-        cy.get(':nth-child(8) > .ant-table-column-sorters').dblclick(); //Status
-        cy.wait(500);
-        cy.get(':nth-child(8) > .ant-table-column-sorters').click();//Status
+       
         cy.wait(200);
 
 
@@ -73,11 +70,11 @@ describe('Tab Cloud', () => {
     it('Usabilities (Admin click hyper link Hostname.\ The system opens a new tab to Manage cloud page.)', () => {
 
         cy.get('#user-management-customer').click();
-        cy.get('#search').type('pla01@gmail.com');
+        cy.get('#search').type('pla01@gmail.com',{force: true});
         cy.get('.ant-table-row > :nth-child(3) > a').click({ force: true });
-        cy.get(':nth-child(6) > .px-0').click({ force: true });
+        cy.get(':nth-child(7) > .px-0').click({ force: true });
         cy.wait(300);
-        cy.get(':nth-child(4) > :nth-child(2) > .underline-link').invoke('removeAttr', 'target').click();
+        cy.get(':nth-child(1) > :nth-child(3) > .underline-link').invoke('removeAttr', 'target').click();
 
         cy.wait(700);
 

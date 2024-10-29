@@ -6,7 +6,7 @@ describe('Volume / Manage / Extend', () => {
         cy.pathVolume()
 
         cy.wait(10000)
-
+        cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/cloud-server/volume')
     })
 
 

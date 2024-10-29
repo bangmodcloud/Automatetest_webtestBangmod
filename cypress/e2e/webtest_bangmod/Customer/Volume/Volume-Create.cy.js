@@ -7,7 +7,7 @@ describe('Volume / Create', () => {
         cy.pathVolume()
 
         cy.wait(2000)
-
+        cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/cloud-server/volume')
     })
 
     it('Usabilities (User go to Create Volume page. The system display :)', () => {
@@ -72,7 +72,7 @@ describe('Volume / Create', () => {
         cy.wait(200)
         cy.get('#size').type('1000');
         cy.get('[type="submit"]').click();
-        cy.get('.text-danger').contains('The number of sizes you specified exceeds your usage quota, please specify the number of sizes less than 995 or contact Support.'); //แก้ไขจำนวน Size ก่อน test
+        cy.get('.text-danger').contains('The number of sizes you specified exceeds your usage quota, please specify the number of sizes less than 505 or contact Support.'); //แก้ไขจำนวน Size ก่อน test
         cy.wait(700);
     })
 
@@ -206,6 +206,11 @@ describe('Volume / Create', () => {
         cy.get('#terms').check();
         cy.get('[type="submit"]').click();
         cy.wait(700);
+        cy.get('.ant-modal-content')
+            .contains('.ant-modal-title', 'Save successfully')
+            .should('be.visible')
+           
+
     })
 
 

@@ -45,7 +45,7 @@ describe('Overview Cloud / Manage', () => {
             cy.get(':nth-child(1) > :nth-child(3) > .underline-link').click({force: true});
             cy.wait(700);
             cy.get(':nth-child(3) > .px-0').click({force: true});
-            cy.get('.ICON > .btn > .fa-expand').first().click();
+            cy.get('.ICON > .btn > .fa-expand').first().click({force: true} );
             cy.wait(700);
             cy.get('body').type('{esc}',{force: true});
 

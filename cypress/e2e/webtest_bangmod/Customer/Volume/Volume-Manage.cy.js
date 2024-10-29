@@ -6,7 +6,7 @@ describe('Volume / Manage', () => {
         cy.pathVolume()
 
         cy.wait(2000)
-
+        cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/cloud-server/volume')
     })
 
     it('Usabilities (User go to Create Volume page. The system display :)', () => {
