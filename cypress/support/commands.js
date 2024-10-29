@@ -25,68 +25,76 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import 'cypress-file-upload';
 
+const username = 'plapika03@gmail.com'
+const password = '769461Pla-'
+
 Cypress.Commands.add('pathKeypair', () => {
-    cy.intercept({
-        url: 'https://bangmod-dev-web-v2.dev.bangmod.cloud/cloud-server/keypair',
-        method: 'GET',
-
-    }).as("User")
-    
+    cy.session(
+      username,
+      () => {
         cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/cloud-server/keypair')
         cy.get('a').click();
         cy.wait(1000)
-
-        cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/cloud-server/keypair')
-        cy.get('a').click();
-        cy.wait(1000)
-
-        cy.get('#username').type('plapika03@gmail.com');
-        cy.get('#password').type('769461Pla-');
-        cy.get('.btn').click();
+        cy.get('input[name=username]').type(username)
+        cy.get('input[name=password]').type(`${password}{enter}`, { log: false })
     
-    
-
-        cy.get('.d-flex > :nth-child(1)').eq(1).type('1');
-        cy.get('.d-flex > :nth-child(2)').type('2');
-        cy.get('.d-flex > :nth-child(3)').type('3');
-        cy.get('.d-flex > :nth-child(4)').type('4');
-        cy.get('.d-flex > :nth-child(5)').type('5');
-        cy.get('.d-flex > :nth-child(6)').type('6');
-
+        cy.get('.otp-field').eq(0).type('1');
+        cy.get('.otp-field').eq(1).type('2');
+        cy.get('.otp-field').eq(2).type('3');
+        cy.get('.otp-field').eq(3).type('4');
+        cy.get('.otp-field').eq(4).type('5');
+        cy.get('.otp-field').eq(5).type('6');
 
         cy.wait(1000)
         cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/cloud-server/keypair')
-
-  }),
+      }
+    )
+  })
 
   Cypress.Commands.add('pathVolume', () => {
-    cy.intercept({
-        url: 'https://bangmod-dev-web-v2.dev.bangmod.cloud/cloud-server/volume',
-        method: 'GET',
-
-    }).as("User")
-
+    cy.session(
+      username,
+      () => {
         cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/cloud-server/volume')
         cy.get('a').click();
         cy.wait(1000)
-
-        cy.get('#username').type('plapika03@gmail.com');
-        cy.get('#password').type('769461Pla-');
-        cy.get('.btn').click();
-
+        cy.get('input[name=username]').type(username)
+        cy.get('input[name=password]').type(`${password}{enter}`, { log: false })
     
-
-        cy.get('.d-flex > :nth-child(1)').eq(1).type('1');
-        cy.get('.d-flex > :nth-child(2)').type('2');
-        cy.get('.d-flex > :nth-child(3)').type('3');
-        cy.get('.d-flex > :nth-child(4)').type('4');
-        cy.get('.d-flex > :nth-child(5)').type('5');
-        cy.get('.d-flex > :nth-child(6)').type('6');
-
+        cy.get('.otp-field').eq(0).type('1');
+        cy.get('.otp-field').eq(1).type('2');
+        cy.get('.otp-field').eq(2).type('3');
+        cy.get('.otp-field').eq(3).type('4');
+        cy.get('.otp-field').eq(4).type('5');
+        cy.get('.otp-field').eq(5).type('6');
 
         cy.wait(1000)
         cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/cloud-server/volume')
+      }
+    )
+  }),
 
+  Cypress.Commands.add('pathVolumeBackup', () => {
+    cy.session(
+      username,
+      () => {
+        cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/cloud-server/volume-backup')
+        cy.get('a').click();
+        cy.wait(1000)
+        cy.get('input[name=username]').type(username)
+        cy.get('input[name=password]').type(`${password}{enter}`, { log: false })
+    
+        cy.get('.otp-field').eq(0).type('1');
+        cy.get('.otp-field').eq(1).type('2');
+        cy.get('.otp-field').eq(2).type('3');
+        cy.get('.otp-field').eq(3).type('4');
+        cy.get('.otp-field').eq(4).type('5');
+        cy.get('.otp-field').eq(5).type('6');
+
+        cy.wait(1000)
+        cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/cloud-server/volume-backup')
+      }
+    )
   }),
   Cypress.Commands.add('loginOffice', () => {
 
@@ -137,26 +145,3 @@ Cypress.Commands.add('pathKeypair', () => {
 
 })
 
-Cypress.Commands.add('loginAdminReadOnly', () => {
-
-    cy.intercept({
-        url: 'https://office-test.bangmod.cloud/auth/login',
-        method: 'GET',
-    }).as("Admin")
-
-
-    cy.visit('https://office-test.bangmod.cloud/auth/login')
-/
-    cy.get('#username').type('adminreadonly@gmail.com');
-    cy.get('#password').type('Qatest01-');
-        cy.get('.btn').click();
-
-
-        cy.get('.d-flex > :nth-child(1)').eq(1).type('1');
-        cy.get('.d-flex > :nth-child(2)').type('2');
-        cy.get('.d-flex > :nth-child(3)').type('3');
-        cy.get('.d-flex > :nth-child(4)').type('4');
-        cy.get('.d-flex > :nth-child(5)').type('5');
-        cy.get('.d-flex > :nth-child(6)').type('6');
-
-})
