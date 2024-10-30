@@ -45,7 +45,7 @@ describe('Manage Size Plan / Delete Size Plan', () => {
             cy.get(':nth-child(2) >  :nth-child(11) > .ICON-TERTIARY > .btn').click();
             cy.get('.modal-content')
                 .should('be.visible')
-                .and('contain', 'Confirm Delete Size Plan?')
+                .and('contain', 'Confirm Delete Size?')
                 .contains('button', 'Yes')
                 .click()
             cy.wait(700);

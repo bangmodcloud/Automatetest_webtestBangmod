@@ -51,7 +51,7 @@ describe('Create Version', () => {
         cy.wait(1000);
         cy.contains('Create Version').click();
         cy.wait(300);
-        cy.contains('Cancel').click();
+        cy.contains('Cancel').click({force: true});
 
         cy.wait(1000);
 
