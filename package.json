@@ -1,5 +1,5 @@
 {
-  "name": "newcloud2022",
+  "name": "newcloud2024",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,13 +10,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^12.4.1",
+    "papaparse": "^5.4.1",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "cypress": "^12.8.1",
     "cypress-downloadfile": "^1.2.2",
     "cypress-file-upload": "^5.0.8",
     "cypress-wait-until": "^1.7.2"
   },
-  "chomeWebSecurity" : false
+  "chomeWebSecurity": false
 }

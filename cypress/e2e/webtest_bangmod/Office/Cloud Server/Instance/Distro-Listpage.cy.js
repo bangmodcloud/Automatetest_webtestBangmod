@@ -33,13 +33,13 @@ describe('List Distro', () => {
             cy.get('#cloud-server-collapse').click();
             cy.get('#cloud-instance-collapse').click();
             cy.get('#cloud-distro').click();
-            cy.get('#search').type('Ubuntu');
+            cy.get('#search').type('Ubuntu',{force: true});
             cy.get(':nth-child(1) > :nth-child(1)').should('be.visible')
             cy.wait(500);
-            cy.get('#search').clear().type('Linux');
+            cy.get('#search').clear().type('Linux',{force: true});
             cy.get(':nth-child(1) > :nth-child(1)').should('be.visible')
             cy.wait(500);
-            cy.get('#search').clear().type('No data');
+            cy.get('#search').clear().type('No data',{force: true});
             cy.get('.ant-empty-description').contains('No data')
             cy.wait(700);
         })
@@ -50,25 +50,25 @@ describe('List Distro', () => {
             cy.get('#cloud-server-collapse').click();
             cy.get('#cloud-instance-collapse').click();
             cy.get('#cloud-distro').click();
-            cy.get(':nth-child(1) > .ant-table-column-sorters').click(); // No
+            cy.get(':nth-child(1) > .ant-table-column-sorters').click({force: true}); // No
             cy.wait(500);
-            cy.get(':nth-child(1) > .ant-table-column-sorters').dblclick(); // No
+            cy.get(':nth-child(1) > .ant-table-column-sorters').dblclick({force: true}); // No
             cy.wait(200);
-            cy.get(':nth-child(2) > .ant-table-column-sorters').click(); // UID
+            cy.get(':nth-child(2) > .ant-table-column-sorters').click({force: true}); // UID
             cy.wait(500);
-            cy.get(':nth-child(2) > .ant-table-column-sorters').dblclick(); // UID
+            cy.get(':nth-child(2) > .ant-table-column-sorters').dblclick({force: true}); // UID
             cy.wait(200);
-            cy.get(':nth-child(3) > .ant-table-column-sorters').click(); // Name
+            cy.get(':nth-child(3) > .ant-table-column-sorters').click({force: true}); // Name
             cy.wait(500);
-            cy.get(':nth-child(3) > .ant-table-column-sorters').dblclick(); // Name
+            cy.get(':nth-child(3) > .ant-table-column-sorters').dblclick({force: true}); // Name
             cy.wait(200);
-            cy.get(':nth-child(4) > .ant-table-column-sorters').click(); // Description
+            cy.get(':nth-child(4) > .ant-table-column-sorters').click({force: true}); // Description
             cy.wait(500);
-            cy.get(':nth-child(4) > .ant-table-column-sorters').dblclick(); // Description
+            cy.get(':nth-child(4) > .ant-table-column-sorters').dblclick({force: true}); // Description
             cy.wait(200);
-            cy.get(':nth-child(5) > .ant-table-column-sorters').click(); // Minimum Disk Required (GB)
+            cy.get(':nth-child(5) > .ant-table-column-sorters').click({force: true}); // Minimum Disk Required (GB)
             cy.wait(500);
-            cy.get(':nth-child(5) > .ant-table-column-sorters').dblclick(); // inimum Disk Required (GB)
+            cy.get(':nth-child(5) > .ant-table-column-sorters').dblclick({force: true}); // inimum Disk Required (GB)
             cy.wait(200);
             cy.get(':nth-child(6) > .ant-table-column-sorters').click({force: true}); // Version 
             cy.wait(500);
@@ -93,7 +93,7 @@ describe('List Distro', () => {
             cy.get('#cloud-server-collapse').click();
             cy.get('#cloud-instance-collapse').click();
             cy.get('#cloud-distro').click();
-            cy.get(':nth-child(1) > :nth-child(3) > .underline-link').click();
+            cy.get(':nth-child(1) > :nth-child(3) > .underline-link').click({force: true});
             cy.get('.header-24-semibold').contains('Manage Distro')
             cy.wait(700);
         })
