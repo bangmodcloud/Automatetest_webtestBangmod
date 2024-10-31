@@ -1,3 +1,4 @@
+import Papa from 'papaparse';
 describe('Volume / Attach to Instance', () => {
     beforeEach(() => {
         cy.on('uncaught:exception', (err, runnable) => {
@@ -6,6 +7,7 @@ describe('Volume / Attach to Instance', () => {
         cy.pathVolume()
 
         cy.wait(2000)
+        cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/cloud-server/volume')
 
     })
 
@@ -66,11 +68,22 @@ describe('Volume / Attach to Instance', () => {
     })
 
     it('Usabilities (User select Instance and click Attach button. User Attach To Instance succeed)', () => {
-        cy.get('tbody tr').eq(4)
+        cy.get('tbody tr').eq(1)
             .find('td')
             .eq(1)
             .click();
         cy.wait(200)
+
+        const csvFilePath = "cypress/e2e/webtest_bangmod/Customer/Volume/dataVolume.csv";
+
+        cy.readFile(csvFilePath).then(csvData => {
+            const data = Papa.parse(csvData, {
+                header: true,
+                skipEmptyLines: true,
+            }).data;
+            data.forEach((row) => {
+                const cloudInstance = row.nameCloud
+
         cy.get('.btn').contains('Attach to Instance').click();
         cy.get('.ant-modal-content').within(() => {
             cy.contains('.ant-modal-title', 'Attach to Instance')
@@ -79,9 +92,11 @@ describe('Volume / Attach to Instance', () => {
                 cy.get('.ant-table-content')
                     .get('.ant-table-thead').invoke('text').should('contains','Volume Name', 'Description', 'Size (GB)', 'Type', 'Bootable')
             })
-            cy.get('#cloudItemId').select('modvm-ojx2y-XP-1');
+            cy.get('#cloudItemId').select(cloudInstance);
 
             cy.contains('button', 'Attach').click();
         })
+    })
+})
     })
 })
