@@ -18,18 +18,31 @@ describe('Volume / Manage / Delete', () => {
             .click();
         cy.wait(200)
 
-        cy.wait(40000)
-        cy.get('.btn').contains('Action').click();
-        cy.get('.dropdown-menu').contains('Delete').click();
-        cy.get('.ant-modal-content').within(() => {
-            cy.contains('.ant-modal-title', 'Confirm Delete Volume?')
-                .should('be.visible')
-                .and('contain', 'Confirm Delete Volume?')
-                .get('.ant-modal-body')
-                .contains('Do you want to delete volume “volume-411THBkQ”?') //แก้ไขชื่อ Volume ก่อนรัน
-                .wait(300)
-            cy.contains('button', 'No');
-            cy.contains('button', 'Yes');
+        const csvFilePath = "cypress/e2e/webtest_bangmod/Customer/Volume/dataVolume.csv";
+
+        cy.readFile(csvFilePath).then(csvData => {
+            const data = Papa.parse(csvData, {
+                header: true,
+                skipEmptyLines: true,
+            }).data;
+            data.forEach((row) => {
+
+                const textModalDelete = row.textModalDeleteVolume
+
+                cy.wait(40000)
+                cy.get('.btn').contains('Action').click();
+                cy.get('.dropdown-menu').contains('Delete').click();
+                cy.get('.ant-modal-content').within(() => {
+                    cy.contains('.ant-modal-title', 'Confirm Delete Volume?')
+                        .should('be.visible')
+                        .and('contain', 'Confirm Delete Volume?')
+                        .get('.ant-modal-body')
+                        .contains(textModalDelete) //แก้ไขชื่อ Volume ก่อนรัน
+                        .wait(300)
+                    cy.contains('button', 'No');
+                    cy.contains('button', 'Yes');
+                })
+            })
         })
         cy.wait(700);
 
@@ -43,19 +56,32 @@ describe('Volume / Manage / Delete', () => {
             .click();
         cy.wait(200)
 
-        cy.wait(40000)
-        cy.get('.btn').contains('Action').click();
-        cy.get('.dropdown-menu').contains('Delete').click();
-        cy.get('.ant-modal-content').within(() => {
-            cy.contains('.ant-modal-title', 'Confirm Delete Volume?')
-                .should('be.visible')
-                .and('contain', 'Confirm Delete Volume?')
-                .get('.ant-modal-body')
-                .contains('Do you want to delete volume “volume-411THBkQ”?') //แก้ไขชื่อ Volume ก่อนรัน
-                .wait(300)
-            cy.contains('button', 'No').click();
+        const csvFilePath = "cypress/e2e/webtest_bangmod/Customer/Volume/dataVolume.csv";
+
+        cy.readFile(csvFilePath).then(csvData => {
+            const data = Papa.parse(csvData, {
+                header: true,
+                skipEmptyLines: true,
+            }).data;
+            data.forEach((row) => {
+
+                const textModalDelete = row.textModalDeleteVolume
+
+                cy.wait(40000)
+                cy.get('.btn').contains('Action').click();
+                cy.get('.dropdown-menu').contains('Delete').click();
+                cy.get('.ant-modal-content').within(() => {
+                    cy.contains('.ant-modal-title', 'Confirm Delete Volume?')
+                        .should('be.visible')
+                        .and('contain', 'Confirm Delete Volume?')
+                        .get('.ant-modal-body')
+                        .contains(textModalDelete) //แก้ไขชื่อ Volume ก่อนรัน
+                        .wait(300)
+                    cy.contains('button', 'No').click();
+                })
+                cy.wait(700);
+            })
         })
-        cy.wait(700);
 
     })
 
@@ -67,19 +93,32 @@ describe('Volume / Manage / Delete', () => {
             .click();
         cy.wait(200)
 
-        cy.wait(40000)
-        cy.get('.btn').contains('Action').click();
-        cy.get('.dropdown-menu').contains('Delete').click();
-        cy.get('.ant-modal-content').within(() => {
-            cy.contains('.ant-modal-title', 'Confirm Delete Volume?')
-                .should('be.visible')
-                .and('contain', 'Confirm Delete Volume?')
-                .get('.ant-modal-body')
-                .contains('Do you want to delete volume “volume-411THBkQ”?') //แก้ไขชื่อ Volume ก่อนรัน
-                .wait(300)
-            cy.contains('button', 'Yes').click();
+        const csvFilePath = "cypress/e2e/webtest_bangmod/Customer/Volume/dataVolume.csv";
+
+        cy.readFile(csvFilePath).then(csvData => {
+            const data = Papa.parse(csvData, {
+                header: true,
+                skipEmptyLines: true,
+            }).data;
+            data.forEach((row) => {
+
+                const textModalDelete = row.textModalDeleteVolume
+
+                cy.wait(40000)
+                cy.get('.btn').contains('Action').click();
+                cy.get('.dropdown-menu').contains('Delete').click();
+                cy.get('.ant-modal-content').within(() => {
+                    cy.contains('.ant-modal-title', 'Confirm Delete Volume?')
+                        .should('be.visible')
+                        .and('contain', 'Confirm Delete Volume?')
+                        .get('.ant-modal-body')
+                        .contains(textModalDelete) //แก้ไขชื่อ Volume ก่อนรัน
+                        .wait(300)
+                    cy.contains('button', 'Yes').click();
+                })
+                cy.wait(700);
+            })
         })
-        cy.wait(700);
 
     })
 })
