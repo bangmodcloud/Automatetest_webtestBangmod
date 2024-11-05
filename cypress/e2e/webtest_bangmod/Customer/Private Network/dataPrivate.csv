@@ -1,2 +1,2 @@
-searchNamePrivate,description,ipv4cidr,subnetDescription,subnetIpv4cidr
-pv-245luwcu,test Create Private,10.0.0.0/24,test Subnet,10.0.0.0/24
+searchNamePrivate,description,ipv4cidr,subnetDescription,subnetIpv4cidr,namePrivateEdit,textModalDeletePrivate,textModalDeleteManagePage,textModalCanNottDelete
+pv-245luwcu,test Create Private,10.0.0.0/24,test Subnet,10.0.0.0/24,pv-Edit,Do you want to delete private network “pv-316plznl”?,Do you want to delete private network “pv-443vnuon”?,Do you want to delete private network “pv-325mrzjq”?
