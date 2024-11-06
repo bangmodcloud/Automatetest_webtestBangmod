@@ -38,6 +38,7 @@ describe('Volume Backup / Listing', () => {
                         .eq(1)
                         .should('contain', row.searchNameVolumeBackup)  //เปลี่ยนคำค้นหาก่อน test
                     cy.wait(700);
+<<<<<<< HEAD
 
                     const searchDateTime = `${row.searchDate} , ${row.searchTime}`
 
@@ -53,6 +54,14 @@ describe('Volume Backup / Listing', () => {
                         .find('td')
                         .eq(5)
                         .should('contain', row.searchNameVolume)  //เปลี่ยนคำค้นหาก่อน test
+=======
+                    const searchDateTime = `${row.searchDate} , ${row.searchTime}`
+                    cy.get('#search').clear().type(searchDateTime)//เปลี่ยนคำค้นหาก่อน test
+                    cy.get('tbody tr').eq(0)
+                        .find('td')
+                        .eq(1)
+                        .should('contain', searchDateTime)  //เปลี่ยนคำค้นหาก่อน test
+>>>>>>> origin
                     cy.wait(700);
 
                 })
@@ -96,6 +105,7 @@ describe('Volume Backup / Listing', () => {
             cy.get('.ant-table-thead').invoke('text').should('contains', 'No', 'Name', 'Description', 'Size (GB)', 'Create Date (GMT+7)', 'Volume', 'Status')
 
             cy.wait(700);
+<<<<<<< HEAD
         })
 
         it('Usabilities (User searches by  Name, Size, Create Date, Volume The system will display the searched items.)', () => {
@@ -158,5 +168,57 @@ describe('Volume Backup / Listing', () => {
 
 
         })
+=======
+        })
+
+        it('Usabilities (User searches by  Name, Size, Create Date, Volume The system will display the searched items.)', () => {
+
+            cy.get('.nav-tabs').contains('System Automatic Backup').click();
+            cy.wait(300);
+            cy.get('#search').type('backup-volume-447AOaKb') //เปลี่ยนคำค้นหาก่อน test
+            cy.get('tbody tr').eq(0)
+                .find('td')
+                .eq(1)
+                .should('contain', 'backup-volume-447AOaKb')  //เปลี่ยนคำค้นหาก่อน test
+            cy.wait(700);
+
+            cy.get('#search').clear().type('10/09/2024 , 09:31')//เปลี่ยนคำค้นหาก่อน test
+            cy.get('tbody tr').eq(0)
+                .find('td')
+                .eq(1)
+                .should('contain', '10/09/2024 , 09:31')  //เปลี่ยนคำค้นหาก่อน test
+            cy.wait(700);
+
+            cy.get('#search').clear().type('volume-modvm-h414g-HQ')//เปลี่ยนคำค้นหาก่อน test
+            cy.get('tbody tr').eq(0)
+                .find('td')
+                .eq(5)
+                .should('contain', 'volume-modvm-h414g-HQ')  //เปลี่ยนคำค้นหาก่อน test
+            cy.wait(700);
+
+        })
+
+        it('Usabilities (User click caret-up icon Fields Column No, Name, Description, Size (GB), Create Date (GMT+7), Volume, Status. The system will to sort ascending.)', () => {
+
+            cy.get('.nav-tabs').contains('System Automatic Backup').click();
+            cy.wait(300);
+            cy.get('[aria-label="No"] > .ant-table-column-sorters').click().wait(500).click();
+            cy.wait(200);
+            cy.get('[aria-label="Name"] > .ant-table-column-sorters').click().wait(500).click();
+            cy.wait(200);
+            cy.get('[aria-label="Description"] > .ant-table-column-sorters').click().wait(500).click();
+            cy.wait(200);
+            cy.get('[aria-label="Size (GB)"] > .ant-table-column-sorters').click().wait(500).click();
+            cy.wait(200);
+            cy.get('[aria-label="Create Date (GMT+7)"] > .ant-table-column-sorters').click().wait(500).click();
+            cy.wait(200);
+            cy.get('[aria-label="Volume"] > .ant-table-column-sorters').click().wait(500).click();
+            cy.wait(200);
+            cy.get('[aria-label="Status"] > .ant-table-column-sorters').click().wait(500).click();
+            cy.wait(700);
+
+
+        })
+>>>>>>> origin
     })
 })

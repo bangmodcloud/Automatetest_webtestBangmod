@@ -1,18 +1,20 @@
-describe('Volume / Manage / Delete', () => {
+import Papa from 'papaparse';
+describe('Volume / Defult Volume / Delete', () => {
     beforeEach(() => {
         cy.on('uncaught:exception', (err, runnable) => {
             return false
         })
         cy.pathVolume()
 
-        cy.wait(10000)
+        cy.wait(2000)
         cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/cloud-server/volume')
+
     })
 
 
     it('Usabilities (User click dropdown Action and choose delete menu. The system display modal : >> view in test plan <<)', () => {
 
-        cy.get('tbody tr').eq(1)
+        cy.get('tbody tr').eq(2)
             .find('td')
             .eq(1)
             .click();
@@ -27,7 +29,7 @@ describe('Volume / Manage / Delete', () => {
             }).data;
             data.forEach((row) => {
 
-                const textModalDelete = row.textModalDeleteVolume
+                const textModalDelete = row.textModalDeleteVolumeDefult
 
                 cy.wait(40000)
                 cy.get('.btn').contains('Action').click();
@@ -35,22 +37,21 @@ describe('Volume / Manage / Delete', () => {
                 cy.get('.ant-modal-content').within(() => {
                     cy.contains('.ant-modal-title', 'Confirm Delete Volume?')
                         .should('be.visible')
-                        .and('contain', 'Confirm Delete Volume?')
                         .get('.ant-modal-body')
                         .contains(textModalDelete) //แก้ไขชื่อ Volume ก่อนรัน
                         .wait(300)
                     cy.contains('button', 'No');
                     cy.contains('button', 'Yes');
                 })
+                cy.wait(700);
             })
         })
-        cy.wait(700);
 
     })
 
     it('Usabilities (User click No button. The system close modal)', () => {
 
-        cy.get('tbody tr').eq(1)
+        cy.get('tbody tr').eq(2)
             .find('td')
             .eq(1)
             .click();
@@ -65,7 +66,7 @@ describe('Volume / Manage / Delete', () => {
             }).data;
             data.forEach((row) => {
 
-                const textModalDelete = row.textModalDeleteVolume
+                const textModalDelete = row.textModalDeleteVolumeDefult
 
                 cy.wait(40000)
                 cy.get('.btn').contains('Action').click();
@@ -73,7 +74,6 @@ describe('Volume / Manage / Delete', () => {
                 cy.get('.ant-modal-content').within(() => {
                     cy.contains('.ant-modal-title', 'Confirm Delete Volume?')
                         .should('be.visible')
-                        .and('contain', 'Confirm Delete Volume?')
                         .get('.ant-modal-body')
                         .contains(textModalDelete) //แก้ไขชื่อ Volume ก่อนรัน
                         .wait(300)
@@ -85,13 +85,13 @@ describe('Volume / Manage / Delete', () => {
 
     })
 
-    it('Usabilities (User click Yes button. User delete succeed)', () => {
+    it('Usabilities (User click Yes button. The system display modal : "Can’t delete volume")', () => {
 
-        cy.get('tbody tr').eq(1)
+        cy.get('tbody tr').eq(2)
             .find('td')
             .eq(1)
             .click();
-        cy.wait(200)
+        cy.wait(1000)
 
         const csvFilePath = "cypress/e2e/webtest_bangmod/Customer/Volume/dataVolume.csv";
 
@@ -102,7 +102,7 @@ describe('Volume / Manage / Delete', () => {
             }).data;
             data.forEach((row) => {
 
-                const textModalDelete = row.textModalDeleteVolume
+                const textModalDelete = row.textModalDeleteVolumeDefult
 
                 cy.wait(40000)
                 cy.get('.btn').contains('Action').click();
@@ -110,12 +110,26 @@ describe('Volume / Manage / Delete', () => {
                 cy.get('.ant-modal-content').within(() => {
                     cy.contains('.ant-modal-title', 'Confirm Delete Volume?')
                         .should('be.visible')
-                        .and('contain', 'Confirm Delete Volume?')
                         .get('.ant-modal-body')
                         .contains(textModalDelete) //แก้ไขชื่อ Volume ก่อนรัน
-                        .wait(300)
                     cy.contains('button', 'Yes').click();
                 })
+                cy.wait(700);
+
+                cy.contains('.ant-modal-content', "Can't delete volume").within(() => {
+                    cy.contains('.ant-modal-title', "Can't delete volume")
+                        .should('be.visible')
+
+                    cy.get('.ant-modal-body').within(() => {
+                        cy.contains('The volume cannot be delete because it has associated resources.')
+                        cy.contains('To delete the volume, first delete the following resource.')
+                        cy.get('.ant-table-content')
+                            .get('.ant-table-thead').invoke('text').should('contains', 'Resource', 'Name')
+                            .wait(300)
+                    })
+                    cy.contains('button', 'Close').should('be.visible');
+                })
+
                 cy.wait(700);
             })
         })

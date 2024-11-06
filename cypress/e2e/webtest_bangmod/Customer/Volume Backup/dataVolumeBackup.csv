@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 searchNameVolumeBackup,searchDate,searchTime,searchNameVolume,searchSize,searchType,nameVolumeBackupEdit,textModalRestore,textModalDeleteVolume,searchNameTabAutomatic,searchVolumeTabAutomatic,searchDateTabAutomatic,searchTimeTabAutomatic
 backup-volume-447AOaKb,10/09/2024,09:31,Volume-447AOaKb,10,lvmdriver-1,backup-volume-Edit,Do you want to restore volume backup “backup-volume-447AOaKb”?,Do you want to delete Volume Backup “backup-volume-447AOaKb”?,system-backup-volume-modvm-h414g-HQA1,volume-modvm-h414g-HQ,20/09/2024,10:10
+=======
+searchNameVolumeBackup,searchSizeVolumeBackup,searchDate,searchTime,searchNameVolume,searchSize,searchType,nameVolumeBackupEdit,textModalRestore,textModalDeleteVolume
+backup-volume-447AOaKb,volume-modvm-h414g-HQ,10/09/2024,09:31,Volume-447AOaKb,10,lvmdriver-1,backup-volume-Edit,Do you want to restore volume backup “backup-volume-447AOaKb”?,Do you want to delete Volume Backup “backup-volume-447AOaKb”?
+>>>>>>> origin
