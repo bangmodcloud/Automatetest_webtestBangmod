@@ -5,8 +5,8 @@ describe('Network / Listing', () => {
             return false
         })
         cy.pathNetwork()
-        cy.wait(2000)
         cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/network/network-interface')
+        cy.wait(2000)
     })
 
     it('Usabilities (User go to Network Interface page. The system display :)', () => {
