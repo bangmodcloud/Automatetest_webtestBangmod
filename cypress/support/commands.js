@@ -23,6 +23,7 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import 'cypress-file-upload';
 
 const username = 'plapika03@gmail.com'
 const password = '769461Pla-'
@@ -95,72 +96,6 @@ Cypress.Commands.add('pathKeypair', () => {
       }
     )
   }),
-  Cypress.Commands.add('pathPrivate', () => {
-    cy.session(
-      username,
-      () => {
-        cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/network/private-network')
-        cy.get('a').click();
-        cy.wait(1000)
-        cy.get('input[name=username]').type(username)
-        cy.get('input[name=password]').type(`${password}{enter}`, { log: false })
-
-        cy.get('.otp-field').eq(0).type('1');
-        cy.get('.otp-field').eq(1).type('2');
-        cy.get('.otp-field').eq(2).type('3');
-        cy.get('.otp-field').eq(3).type('4');
-        cy.get('.otp-field').eq(4).type('5');
-        cy.get('.otp-field').eq(5).type('6');
-
-        cy.wait(1000)
-        cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/network/private-network')
-      }
-    )
-  }),
-  Cypress.Commands.add('pathSubnet', () => {
-    cy.session(
-      username,
-      () => {
-        cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/network/subnet')
-        cy.get('a').click();
-        cy.wait(1000)
-        cy.get('input[name=username]').type(username)
-        cy.get('input[name=password]').type(`${password}{enter}`, { log: false })
-
-        cy.get('.otp-field').eq(0).type('1');
-        cy.get('.otp-field').eq(1).type('2');
-        cy.get('.otp-field').eq(2).type('3');
-        cy.get('.otp-field').eq(3).type('4');
-        cy.get('.otp-field').eq(4).type('5');
-        cy.get('.otp-field').eq(5).type('6');
-
-        cy.wait(1000)
-        cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/network/subnet')
-      }
-    )
-  }),
-  Cypress.Commands.add('pathNetwork', () => {
-    cy.session(
-      username,
-      () => {
-        cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/network/network-interface')
-        cy.get('a').click();
-        cy.wait(1000)
-        cy.get('input[name=username]').type(username)
-        cy.get('input[name=password]').type(`${password}{enter}`, { log: false })
-
-        cy.get('.otp-field').eq(0).type('1');
-        cy.get('.otp-field').eq(1).type('2');
-        cy.get('.otp-field').eq(2).type('3');
-        cy.get('.otp-field').eq(3).type('4');
-        cy.get('.otp-field').eq(4).type('5');
-        cy.get('.otp-field').eq(5).type('6');
-
-        cy.wait(1000)
-        cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/network/network-interface')
-      }
-    )
-  }),
   Cypress.Commands.add('loginOffice', () => {
 
     cy.intercept({
@@ -209,3 +144,4 @@ Cypress.Commands.add('pathKeypair', () => {
         cy.get('.d-flex > :nth-child(6)').type('6');
 
 })
+
