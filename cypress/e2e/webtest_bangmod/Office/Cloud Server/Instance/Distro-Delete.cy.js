@@ -16,7 +16,7 @@ describe('Manage Distro / Delete Distro', () => {
             cy.get('#cloud-distro').click();
             cy.wait(1000);
             cy.get(':nth-child(3) > .px-0').click();
-            cy.get(':nth-child(1) > :nth-child(9) > .ICON-TERTIARY > .btn').click();
+            cy.get(':nth-child(1) > :nth-child(10) > .BLACK-ICON > .btn').click();
             cy.get('.modal-content')
                 .should('be.visible')
                 .and('contain', 'Confirm Delete Distro?')
@@ -32,7 +32,7 @@ describe('Manage Distro / Delete Distro', () => {
             cy.get('#cloud-distro').click();
             cy.wait(1000);
             cy.get(':nth-child(3) > .px-0').click();
-            cy.get(':nth-child(1) > :nth-child(9) > .ICON-TERTIARY > .btn').click();
+            cy.get(':nth-child(1) > :nth-child(10) > .BLACK-ICON > .btn').click();
             cy.get('.modal-content')
                 .should('be.visible')
                 .and('contain', 'Confirm Delete Distro?')
@@ -51,7 +51,7 @@ describe('Manage Distro / Delete Distro', () => {
             cy.get('#cloud-distro').click();
             cy.wait(1000);
             cy.get(':nth-child(3) > .px-0').click();
-            cy.get(':nth-child(1) > :nth-child(2) > .underline-link').click();
+            cy.get(':nth-child(1) > :nth-child(3) > .underline-link').click();
             cy.contains('Delete').click();
             cy.get('.modal-content')
                 .should('be.visible')
@@ -68,7 +68,7 @@ describe('Manage Distro / Delete Distro', () => {
             cy.get('#cloud-distro').click();
             cy.wait(1000);
             cy.get(':nth-child(3) > .px-0').click();
-            cy.get(':nth-child(1) > :nth-child(2) > .underline-link').click();
+            cy.get(':nth-child(1) > :nth-child(3) > .underline-link').click();
             cy.contains('Delete').click();
             cy.get('.modal-content')
                 .should('be.visible')

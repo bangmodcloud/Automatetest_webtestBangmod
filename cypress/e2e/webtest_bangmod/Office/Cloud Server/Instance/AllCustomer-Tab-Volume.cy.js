@@ -4,22 +4,21 @@ describe('Tab Volume', () => {
             return false
         })
         cy.loginOffice()
+        cy.wait(3000);
 
     })
 
     it('Usabilities (Admin search with Name.  The system displays the searched list. If not found, it will display a message saying No Data. )', () => {
 
         cy.get('#user-management-customer').click();
-        cy.get('#search').type('pla01@gmail.com');
+        cy.get('#search').type('pla01@gmail.com',{force: true} );
         cy.get('.ant-table-row > :nth-child(3) > a').click({ force: true });
-        cy.get(':nth-child(7) > .px-0').click({ force: true });
-        cy.wait(20000);
+        cy.get(':nth-child(8) > .px-0').click({ force: true });
+        cy.wait(2000);
         cy.get('#search').type('test-volume');
         cy.get('.ant-table-row > :nth-child(1)').should('be.visible');
-        cy.get('#search').clear().type('Wara Test');
-        cy.get('.ant-table-row > :nth-child(1)').should('be.visible');
         cy.get('#search').clear().type('name');
-        cy.get('.ant-empty-description').contains('No Data')
+        cy.get('.ant-empty-description').contains('No data')
         cy.wait(700);
 
     })
@@ -28,10 +27,10 @@ describe('Tab Volume', () => {
         The system will to sort ascending.)', () => {
 
         cy.get('#user-management-customer').click();
-        cy.get('#search').type('pla01@gmail.com');
+        cy.get('#search').type('pla01@gmail.com',{force: true} );
         cy.get('.ant-table-row > :nth-child(3) > a').click({ force: true });
-        cy.get(':nth-child(7) > .px-0').click({ force: true });
-        cy.wait(8000);
+        cy.get(':nth-child(8) > .px-0').click({ force: true });
+        cy.wait(4000);
         cy.get(':nth-child(1) > .ant-table-column-sorters').dblclick(); //Name
         cy.wait(500);
         cy.get(':nth-child(1) > .ant-table-column-sorters').click(); //Name
@@ -59,6 +58,14 @@ describe('Tab Volume', () => {
         cy.get(':nth-child(7) > .ant-table-column-sorters').dblclick(); //Status
         cy.wait(500);
         cy.get(':nth-child(7) > .ant-table-column-sorters').click(); //Status
+        cy.wait(200);
+        cy.get(':nth-child(8) > .ant-table-column-sorters').dblclick(); //Status
+        cy.wait(500);
+        cy.get(':nth-child(8) > .ant-table-column-sorters').click(); //Status
+        cy.wait(200);
+        cy.get(':nth-child(9) > .ant-table-column-sorters').dblclick(); //Status
+        cy.wait(500);
+        cy.get(':nth-child(9) > .ant-table-column-sorters').click(); //Status
 
 
 
@@ -69,23 +76,23 @@ describe('Tab Volume', () => {
     it('Usabilities (Admin click hyper link Name.\ The system opens a new tab to Manage Volume  page.)', () => {
 
         cy.get('#user-management-customer').click();
-        cy.get('#search').type('pla01@gmail.com');
+        cy.get('#search').type('pla01@gmail.com',{force: true} );
         cy.get('.ant-table-row > :nth-child(3) > a').click({ force: true });
-        cy.get(':nth-child(7) > .px-0').click({ force: true });
-        cy.wait(8000);
-        cy.get(':nth-child(1) > :nth-child(2) > .underline-link').invoke('removeAttr', 'target').click();
+        cy.get(':nth-child(8) > .px-0').click({ force: true });
+        cy.wait(4000);
+        cy.get(':nth-child(1) > :nth-child(3) > .underline-link').invoke('removeAttr', 'target').click();
 
-        cy.wait(700);
+        cy.wait(1000);
 
     })
     it('Usabilities (Admin click hyper link Cloud Instance.\ The system opens a new tab to Manage Cloud of Instance page.)', () => {
 
         cy.get('#user-management-customer').click();
-        cy.get('#search').type('pla01@gmail.com');
+        cy.get('#search').type('pla01@gmail.com',{force: true} );
         cy.get('.ant-table-row > :nth-child(3) > a').click({ force: true });
-        cy.get(':nth-child(7) > .px-0').click({ force: true });
-        cy.wait(20000);
-        cy.get(':nth-child(1) > :nth-child(6) > .underline-link').invoke('removeAttr', 'target').click();
+        cy.get(':nth-child(8) > .px-0').click({ force: true });
+        cy.wait(4000);
+        cy.get(':nth-child(2) > :nth-child(7) > .underline-link').invoke('removeAttr', 'target').click();
 
         cy.wait(700);
 

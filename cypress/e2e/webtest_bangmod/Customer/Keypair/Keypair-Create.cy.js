@@ -1,11 +1,14 @@
+import Papa from 'papaparse';
 describe('Keypair / Create', () => {
-    before(() => {
+    let users;
+    beforeEach(() => {
         cy.on('uncaught:exception', (err, runnable) => {
             return false
         })
         cy.pathKeypair()
 
         cy.wait(2000)
+        cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/cloud-server/keypair')
 
     })
 
@@ -55,13 +58,23 @@ describe('Keypair / Create', () => {
     })
 
     it('Usabilities (User try Create Keypair by Import Keypair. User Create Keypair by Import Keypair succeed.)', () => {
-
+        const csvFilePath = "cypress/e2e/webtest_bangmod/Customer/Keypair/dataKeypair.csv";
         cy.contains('Create Keypair').click();
         cy.wait(200)
-        cy.get('#name').clear().type('keypair-Import');
-        cy.get('[for="keypair-file"]').click().selectFile('cypress/fixtures/testprivatekey.txt');
-        cy.get('[type="submit"]').click();
-        cy.wait(700);
+        cy.readFile(csvFilePath).then(csvData => {
+            const data = Papa.parse(csvData, {
+                header: true,
+                skipEmptyLines: true,
+            }).data;
+            data.forEach((row) => {
+                const namekeypairImport = row.namekeypairImport;
+                cy.get('#name').clear().type(row.namekeypairImport);
+                cy.get('[for="keypair-file"]').click().selectFile('cypress/fixtures/testprivatekey.txt');
+                cy.get('[type="submit"]').click();
+                cy.wait(700);
+            })
+        })
+
     })
 
     it('Usabilities (User click radio-btn "Generate Keypair". The system display :)', () => {
@@ -79,15 +92,25 @@ describe('Keypair / Create', () => {
 
     it('Usabilities (User try Create Keypair by Generate Keypair". User Create Keypair by Generate Keypair succeed.)', () => {
 
+        const csvFilePath = "cypress/e2e/webtest_bangmod/Customer/Keypair/dataKeypair.csv";
         cy.contains('Create Keypair').click();
         cy.wait(200)
-        cy.get('#name').clear().type('keypair-Generate');
-        cy.get('#generate').click().should('be.checked');
-        cy.contains('[for="generate"]', 'Generate Keypair').should('be.visible');
-        cy.get('.btn').contains('Generate').click();
-        cy.wait(700);
-        cy.get('[type="submit"]').click();
-        cy.wait(700);
+        cy.readFile(csvFilePath).then(csvData => {
+            const data = Papa.parse(csvData, {
+                header: true,
+                skipEmptyLines: true,
+            }).data;
+            data.forEach((row) => {
+                const nameKeypairGenerate = row.nameKeypairGenerate;
+                cy.get('#name').clear().type(row.nameKeypairGenerate);
+                cy.get('#generate').click().should('be.checked');
+                cy.contains('[for="generate"]', 'Generate Keypair').should('be.visible');
+                cy.get('.btn').contains('Generate').click();
+                cy.wait(700);
+                cy.get('[type="submit"]').click();
+                cy.wait(700);
+            })
+        })
 
 
     })
