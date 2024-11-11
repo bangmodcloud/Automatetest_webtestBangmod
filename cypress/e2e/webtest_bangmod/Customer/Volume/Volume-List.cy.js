@@ -31,7 +31,7 @@ describe('Volume / Listing', () => {
         cy.get('#search').clear().type('modvm-waratest')//เปลี่ยนคำค้นหาก่อน test
         cy.get('tbody tr').eq(0)
             .find('td')
-            .eq(1)
+            .eq(6)
             .should('contain', 'modvm-waratest')  //เปลี่ยนคำค้นหาก่อน test
             cy.wait(700);
 
