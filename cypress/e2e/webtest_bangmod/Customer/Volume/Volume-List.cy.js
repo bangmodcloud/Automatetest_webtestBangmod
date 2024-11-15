@@ -21,20 +21,21 @@ describe('Volume / Listing', () => {
 
     it('Usabilities (User searches by Name and Cloud Instance. The system will display the searched items.)', () => {
        
-        cy.get('#search').type('volume-modvm-rdj49-JX') //เปลี่ยนคำค้นหาก่อน test
-        cy.get('tbody tr').eq(0)
-            .find('td')
-            .eq(1)
-            .should('contain', 'volume-modvm-rdj49-JX')  //เปลี่ยนคำค้นหาก่อน test
-            cy.wait(700);
-
-        cy.get('#search').clear().type('modvm-bcze0-YK-1')//เปลี่ยนคำค้นหาก่อน test
-        cy.get('tbody tr').eq(0)
-            .find('td')
-            .eq(1)
-            .should('contain', 'modvm-bcze0-YK-1')  //เปลี่ยนคำค้นหาก่อน test
-            cy.wait(700);
-
+        const csvFilePath = "cypress/e2e/webtest_bangmod/Customer/Volume/dataVolume.csv";
+        cy.readFile(csvFilePath).then(csvData => {
+            const data = Papa.parse(csvData, {
+                header: true,
+                skipEmptyLines: true,
+            }).data;
+            data.forEach((row) => {
+                cy.get('#search').type(row.searchNameVolume) //เปลี่ยนคำค้นหาก่อน test
+                cy.get('tbody tr').eq(0)
+                    .find('td')
+                    .eq(1)
+                    .should('contain', row.searchNameVolume)  //เปลี่ยนคำค้นหาก่อน test
+                cy.wait(700);
+            });
+        });
     })
 
     it('Usabilities (User click caret-up icon Fields Column No, Name, Description, Size (GB), Type, Bootable, Cloud Instance, Status. The system will to sort ascending.)', () => {
