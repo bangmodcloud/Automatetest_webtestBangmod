@@ -1,7 +1,2 @@
-<<<<<<< HEAD
-searchNamePrivate
-pv-245luwcu
-=======
-searchNamePrivate,description,ipv4cidr,subnetDescription,subnetIpv4cidr
-pv-245luwcu,test Create Private,10.0.0.0/24,test Subnet,10.0.0.0/24
->>>>>>> origin
+searchNamePrivate,description,ipv4cidr,subnetDescription,subnetIpv4cidr,namePrivateEdit
+pv-245luwcu,test Create Private,10.0.0.0/24,test Subnet,10.0.0.0/24,pv-Edit
