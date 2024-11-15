@@ -95,6 +95,7 @@ Cypress.Commands.add('pathKeypair', () => {
       }
     )
   }),
+
   Cypress.Commands.add('pathPrivate', () => {
     cy.session(
       username,
@@ -104,7 +105,6 @@ Cypress.Commands.add('pathKeypair', () => {
         cy.wait(1000)
         cy.get('input[name=username]').type(username)
         cy.get('input[name=password]').type(`${password}{enter}`, { log: false })
-
         cy.get('.otp-field').eq(0).type('1');
         cy.get('.otp-field').eq(1).type('2');
         cy.get('.otp-field').eq(2).type('3');
@@ -117,6 +117,7 @@ Cypress.Commands.add('pathKeypair', () => {
       }
     )
   }),
+
   Cypress.Commands.add('pathSubnet', () => {
     cy.session(
       username,
@@ -170,7 +171,6 @@ Cypress.Commands.add('pathKeypair', () => {
 
 
     cy.visit('https://office-test-bangmod.bangmod.cloud/auth/login')
-/
     cy.get('#username').type('admin@bangmod.cloud');
     cy.get('#password').type('Adminbangmod123@');
         cy.get('.btn').click();
