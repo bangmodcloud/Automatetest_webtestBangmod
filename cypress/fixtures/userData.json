@@ -1,0 +1,17 @@
+{
+  "dataVolume": [
+     {
+        "testcase": "listVolume",
+        "searchNameVolume": "volume-modvm-h414g-HQ",
+        "searchNameCloud": "modvm-bcze0-YK-1",
+        "errorExceedsQuota": "The number of sizes you specified exceeds your usage quota, please specify the number of sizes less than 955 or contact Support."
+
+     }
+  ],
+  "dataKeypair": [
+    {
+       "searchNameKeypair": "keypair-waratest"
+
+    }
+ ]
+}

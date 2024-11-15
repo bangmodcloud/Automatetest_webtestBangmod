@@ -1,4 +1,3 @@
-import Papa from 'papaparse';
 describe('Volume / Change Status Enable & Disable', () => {
     beforeEach(() => {
         cy.on('uncaught:exception', (err, runnable) => {
@@ -7,7 +6,6 @@ describe('Volume / Change Status Enable & Disable', () => {
         cy.pathVolume()
 
         cy.wait(2000)
-        cy.visit('https://bangmod-dev-web-v2.dev.bangmod.cloud/cloud-server/volume')
 
     })
 
@@ -19,31 +17,16 @@ describe('Volume / Change Status Enable & Disable', () => {
                 .eq(1)
                 .click();
             cy.wait(2000)
-
-            const csvFilePath = "cypress/e2e/webtest_bangmod/Customer/Volume/dataVolume.csv";
-
-            cy.readFile(csvFilePath).then(csvData => {
-                const data = Papa.parse(csvData, {
-                    header: true,
-                    skipEmptyLines: true,
-                }).data;
-                data.forEach((row) => {
-
-                    const textModalDisable = row.textModalDisable
-
-                    cy.get('.ant-switch').click();
-                    cy.get('.ant-modal-content').within(() => {
-                        cy.contains('.ant-modal-title', 'Confirm Disable System Automatic Backup ?')
-                            .should('be.visible')
-                            .get('.ant-modal-body')
-                            .contains(textModalDisable) //แก้ไขชื่อ Volume ก่อนรัน
-                        cy.get('.callout-danger').contains('Disabling backup will result in this volume not being automatically backed up at the system-set interval. But the volume backup will still be charged until you delete the backup file.')
-                            .wait(300)
-                        cy.contains('button', 'Cancel').should('be.visible')
-                        cy.contains('button', 'Confirm disable').should('be.visible')
-                    })
-                })
-                cy.wait(700)
+            cy.get('.ant-switch').click();
+            cy.get('.ant-modal-content').within(() => {
+                cy.contains('.ant-modal-title', 'Confirm Disable System Automatic Backup ?')
+                    .should('be.visible')
+                    .get('.ant-modal-body')
+                    .contains('Do you want to disable automatic backup of this Volume “volume-modvm-pureewat-mf”?') //แก้ไขชื่อ Volume ก่อนรัน
+                cy.get('.callout-danger').contains('Disabling backup will result in this volume not being automatically backed up at the system-set interval. But the volume backup will still be charged until you delete the backup file.')
+                    .wait(300)
+                cy.contains('button', 'Cancel').should('be.visible')
+                cy.contains('button', 'Confirm disable').should('be.visible')
             })
         })
 
@@ -53,31 +36,15 @@ describe('Volume / Change Status Enable & Disable', () => {
                 .eq(1)
                 .click();
             cy.wait(2000)
-
-            const csvFilePath = "cypress/e2e/webtest_bangmod/Customer/Volume/dataVolume.csv";
-
-            cy.readFile(csvFilePath).then(csvData => {
-                const data = Papa.parse(csvData, {
-                    header: true,
-                    skipEmptyLines: true,
-                }).data;
-                data.forEach((row) => {
-
-                    const textModalDisable = row.textModalDisable
-
-                    cy.get('.ant-switch').click();
-                    cy.get('.ant-modal-content').within(() => {
-                        cy.contains('.ant-modal-title', 'Confirm Disable System Automatic Backup ?')
-                            .should('be.visible')
-                            .get('.ant-modal-body')
-                            .contains(textModalDisable) //แก้ไขชื่อ Volume ก่อนรัน
-                        cy.get('.callout-danger').contains('Disabling backup will result in this volume not being automatically backed up at the system-set interval. But the volume backup will still be charged until you delete the backup file.')
-                            .wait(300)
-                        cy.contains('button', 'Cancel').click();
-                    })
-
-                    cy.wait(700)
-                })
+            cy.get('.ant-switch').click();
+            cy.get('.ant-modal-content').within(() => {
+                cy.contains('.ant-modal-title', 'Confirm Disable System Automatic Backup ?')
+                    .should('be.visible')
+                    .get('.ant-modal-body')
+                    .contains('Do you want to disable automatic backup of this Volume “volume-modvm-pureewat-mf”?') //แก้ไขชื่อ Volume ก่อนรัน
+                cy.get('.callout-danger').contains('Disabling backup will result in this volume not being automatically backed up at the system-set interval. But the volume backup will still be charged until you delete the backup file.')
+                    .wait(300)
+                cy.contains('button', 'Cancel').click();
             })
         })
 
@@ -87,32 +54,16 @@ describe('Volume / Change Status Enable & Disable', () => {
                 .eq(1)
                 .click();
             cy.wait(2000)
-
-            const csvFilePath = "cypress/e2e/webtest_bangmod/Customer/Volume/dataVolume.csv";
-
-            cy.readFile(csvFilePath).then(csvData => {
-                const data = Papa.parse(csvData, {
-                    header: true,
-                    skipEmptyLines: true,
-                }).data;
-                data.forEach((row) => {
-
-                    const textModalDisable = row.textModalDisable
-
-                    cy.get('.ant-switch').click();
-                    cy.get('.ant-modal-content').within(() => {
-                        cy.contains('.ant-modal-title', 'Confirm Disable System Automatic Backup ?')
-                            .should('be.visible')
-                            .get('.ant-modal-body')
-                            .contains(textModalDisable) //แก้ไขชื่อ Volume ก่อนรัน
-                        cy.get('.callout-danger').contains('Disabling backup will result in this volume not being automatically backed up at the system-set interval. But the volume backup will still be charged until you delete the backup file.')
-                            .wait(300)
-                        cy.contains('button', 'Confirm disable').click();
-
-                    })
-                })
+            cy.get('.ant-switch').click();
+            cy.get('.ant-modal-content').within(() => {
+                cy.contains('.ant-modal-title', 'Confirm Disable System Automatic Backup ?')
+                    .should('be.visible')
+                    .get('.ant-modal-body')
+                    .contains('Do you want to disable automatic backup of this Volume “volume-modvm-pureewat-mf”?') //แก้ไขชื่อ Volume ก่อนรัน
+                cy.get('.callout-danger').contains('Disabling backup will result in this volume not being automatically backed up at the system-set interval. But the volume backup will still be charged until you delete the backup file.')
+                    .wait(300)
+                cy.contains('button', 'Confirm disable').click();
             })
-            cy.wait(700)
         })
     })
 
@@ -124,32 +75,16 @@ describe('Volume / Change Status Enable & Disable', () => {
                 .eq(1)
                 .click();
             cy.wait(2000)
-
-            const csvFilePath = "cypress/e2e/webtest_bangmod/Customer/Volume/dataVolume.csv";
-
-            cy.readFile(csvFilePath).then(csvData => {
-                const data = Papa.parse(csvData, {
-                    header: true,
-                    skipEmptyLines: true,
-                }).data;
-                data.forEach((row) => {
-
-                    const textModalEnable = row.textModalEnable
-
-                    cy.get('.ant-switch').click();
-                    cy.get('.ant-modal-content').within(() => {
-                        cy.contains('.ant-modal-title', 'Confirm Enable System Automatic Backup ?')
-                            .should('be.visible')
-                            .get('.ant-modal-body')
-                            .contains(textModalEnable) //แก้ไขชื่อ Volume ก่อนรัน
-                        cy.get('.callout-danger').contains('Enabling Automatic Backup will cause this volume to be automatically backed up. The backup interval will depend on the system.')
-                            .wait(300)
-                        cy.contains('button', 'Cancel').should('be.visible')
-                        cy.contains('button', 'Confirm enable').should('be.visible')
-
-                    })
-                })
-                cy.wait(700)
+            cy.get('.ant-switch').click();
+            cy.get('.ant-modal-content').within(() => {
+                cy.contains('.ant-modal-title', 'Confirm Enable System Automatic Backup ?')
+                    .should('be.visible')
+                    .get('.ant-modal-body')
+                    .contains('Do you want to enable automatic backup of this Volume “volume-modvm-pureewat-mf”?') //แก้ไขชื่อ Volume ก่อนรัน
+                cy.get('.callout-danger').contains('Enabling Automatic Backup will cause this volume to be automatically backed up. The backup interval will depend on the system.')
+                    .wait(300)
+                cy.contains('button', 'Cancel').should('be.visible')
+                cy.contains('button', 'Confirm enable').should('be.visible')
             })
         })
 
@@ -159,29 +94,15 @@ describe('Volume / Change Status Enable & Disable', () => {
                 .eq(1)
                 .click();
             cy.wait(2000)
-            const csvFilePath = "cypress/e2e/webtest_bangmod/Customer/Volume/dataVolume.csv";
-
-            cy.readFile(csvFilePath).then(csvData => {
-                const data = Papa.parse(csvData, {
-                    header: true,
-                    skipEmptyLines: true,
-                }).data;
-                data.forEach((row) => {
-
-                    const textModalEnable = row.textModalEnable
-
-                    cy.get('.ant-switch').click();
-                    cy.get('.ant-modal-content').within(() => {
-                        cy.contains('.ant-modal-title', 'Confirm Enable System Automatic Backup ?')
-                            .should('be.visible')
-                            .get('.ant-modal-body')
-                            .contains(textModalEnable) //แก้ไขชื่อ Volume ก่อนรัน
-                        cy.get('.callout-danger').contains('Enabling Automatic Backup will cause this volume to be automatically backed up. The backup interval will depend on the system.')
-                            .wait(300)
-                        cy.contains('button', 'Cancel').click();
-                    })
-                })
-                cy.wait(700)
+            cy.get('.ant-switch').click();
+            cy.get('.ant-modal-content').within(() => {
+                cy.contains('.ant-modal-title', 'Confirm Enable System Automatic Backup ?')
+                    .should('be.visible')
+                    .get('.ant-modal-body')
+                    .contains('Do you want to enable automatic backup of this Volume “volume-modvm-pureewat-mf”?') //แก้ไขชื่อ Volume ก่อนรัน
+                cy.get('.callout-danger').contains('Enabling Automatic Backup will cause this volume to be automatically backed up. The backup interval will depend on the system.')
+                    .wait(300)
+                cy.contains('button', 'Cancel').click();
             })
         })
 
@@ -191,30 +112,15 @@ describe('Volume / Change Status Enable & Disable', () => {
                 .eq(1)
                 .click();
             cy.wait(2000)
-
-            const csvFilePath = "cypress/e2e/webtest_bangmod/Customer/Volume/dataVolume.csv";
-
-            cy.readFile(csvFilePath).then(csvData => {
-                const data = Papa.parse(csvData, {
-                    header: true,
-                    skipEmptyLines: true,
-                }).data;
-                data.forEach((row) => {
-
-                    const textModalEnable = row.textModalEnable
-
-                    cy.get('.ant-switch').click();
-                    cy.get('.ant-modal-content').within(() => {
-                        cy.contains('.ant-modal-title', 'Confirm Enable System Automatic Backup ?')
-                            .should('be.visible')
-                            .get('.ant-modal-body')
-                            .contains(textModalEnable) //แก้ไขชื่อ Volume ก่อนรัน
-                        cy.get('.callout-danger').contains('Enabling Automatic Backup will cause this volume to be automatically backed up. The backup interval will depend on the system.')
-                            .wait(300)
-                        cy.contains('button', 'Confirm enable').click();
-                    })
-                })
-                cy.wait(700)
+            cy.get('.ant-switch').click();
+            cy.get('.ant-modal-content').within(() => {
+                cy.contains('.ant-modal-title', 'Confirm Enable System Automatic Backup ?')
+                    .should('be.visible')
+                    .get('.ant-modal-body')
+                    .contains('Do you want to enable automatic backup of this Volume “volume-modvm-pureewat-mf”?') //แก้ไขชื่อ Volume ก่อนรัน
+                cy.get('.callout-danger').contains('Enabling Automatic Backup will cause this volume to be automatically backed up. The backup interval will depend on the system.')
+                    .wait(300)
+                cy.contains('button', 'Confirm enable').click();
             })
         })
     })
