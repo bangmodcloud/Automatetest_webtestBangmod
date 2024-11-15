@@ -1,2 +1,2 @@
-searchName,searchNetwork,searchAttachedDevice,searchFixedIP,searchMACAddress,searchSecurityGroup,nameNetwork,MACAddress,nameNetworkEdit
-nic-34c5d31d-e3,subnet-025dohod,lb-650utgyb,10.0.0.66,fa:16:3e:2a:b1:3e,sg-051pkjzq,nic-test01,fa:16:3e:b2:8f:68,nic-test-edit
+searchName,searchNetwork,searchAttachedDevice,searchFixedIP,searchMACAddress,searchSecurityGroup,nameNetwork,MACAddress,nameNetworkEdit,iPV4,textModalDeleteAllowedAddressPair
+nic-34c5d31d-e3,subnet-025dohod,lb-650utgyb,10.0.0.66,fa:16:3e:2a:b1:3e,sg-051pkjzq,nic-test01,fa:16:3e:b2:8f:68,nic-test-edit,10.0.0.0/24,Do you want to delete Allowed Address Pair “ 10.0.0.0/24 ”?

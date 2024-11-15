@@ -39,6 +39,14 @@ describe('Volume / Listing', () => {
                     .should('contain', row.searchNameVolume)  //เปลี่ยนคำค้นหาก่อน test
                 cy.wait(700);
 
+<<<<<<< HEAD
+        cy.get('#search').clear().type('modvm-waratest')//เปลี่ยนคำค้นหาก่อน test
+        cy.get('tbody tr').eq(0)
+            .find('td')
+            .eq(6)
+            .should('contain', 'modvm-waratest')  //เปลี่ยนคำค้นหาก่อน test
+            cy.wait(700);
+=======
                 cy.get('#search').type(row.searchNameCloud) //เปลี่ยนคำค้นหาก่อน test
                 cy.get('tbody tr').eq(0)
                     .find('td')
@@ -48,6 +56,7 @@ describe('Volume / Listing', () => {
 
             })
         })
+>>>>>>> origin
 
     })
 
